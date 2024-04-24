@@ -1,0 +1,48 @@
+<header class="header">
+    <div class="container">
+        <div class="header__nav-bar">
+            <p class="nav-bar__logo" routerLink="/home">Instagram Dev</p>
+            <input class="nav-bar__search" type="text" placeholder="Buscar usuario" (click)="openModal()">
+            <div class="nav-bar__options">
+                <p class="nav-bar__options-profile" routerLink="/home/new/post">Crear</p>
+                <a class="nav-bar__options-profile" [href]="'/home/user/' + username">Perfil</a>
+                <p class="nav-bar__options-logout" (click)="logout()">Cerrar sesión</p>
+            </div>
+            <img class="nav-bar__icon" src="../../../assets/img/menu-bar.svg" alt="menu bar icon" (click)="showMenu()">
+        </div>
+        <div class="menu">
+            <div class="card" #menu>
+                <div class="menu__option" (click)="closeMenu()" routerLink="/home">
+                    <img class="menu__option-icon" src="../../../assets/img/home.svg" alt="icono home">
+                    <p class="menu__option-text">Inicio</p>
+                </div>
+                <div class="menu__option" (click)="openModal()">
+                    <img class="menu__option-icon" src="../../../assets/img/search.svg" alt="icono busqueda">
+                    <p class="menu__option-text">Buscar</p>
+                </div>
+                <div class="menu__option">
+                    <img class="menu__option-icon" src="../../../assets/img/profile.svg" alt="icono perfil">
+                    <a class="menu__option-text" [href]="'/home/user/' + username" (click)="closeMenu()">Perfil</a>
+                </div>
+                <div class="menu__option" (click)="closeMenu()" routerLink="/home/new/post">
+                    <img class="menu__option-icon" src="../../../assets/img/create.svg" alt="icono crear">
+                    <p class="menu__option-text">Crear</p>
+                </div>
+                <div class="menu__option" (click)="closeMenu()">
+                    <img class="menu__option-icon" src="../../../assets/img/log-out.svg" alt="icono logout">
+                    <p class="menu__option-text" (click)="logout()">Cerrar sesion</p>
+                </div>
+            </div>
+        </div>
+        <div class="modal" #modal>
+            <div class="modal-content">
+              <span class="close" (click)="closeModal()">&times;</span>
+              <input class="modal-content__search" type="text" placeholder="Buscar usuario" (keyup)="search(input.value)" #input>
+              <div class="user-search" *ngFor="let user of users">
+                <a class="user-search__link" [href]="'/home/user/' + user.username">{{user.name + ' ' + user.lastname + ' \t / @' + user.username}}</a>
+              </div>            
+            </div>
+          </div>
+    </div>
+</header>
+<router-outlet></router-outlet>

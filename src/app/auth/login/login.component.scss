@@ -1,0 +1,96 @@
+@import '../../../styles.scss';
+
+$gray : rgb(189, 188, 188);
+$blue : #4CB5F9;
+$error : rgb(243, 80, 80);
+
+.login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+
+    &__logo {
+        font-family: "Oleo Script", system-ui;
+        font-size: 4rem;
+        text-align: center;
+    }
+
+    &__image-container {
+        display: none;
+        @include tablet {
+            display: block;
+        }
+    }
+
+    .form__field {
+        margin-bottom: 1rem;
+        &-label {
+            font-weight: bold;
+        }
+
+        &-input {
+            border-color: $gray;
+            border-style: solid;
+            padding: 7px 0px 7px 7px;
+            border-radius: 5px;
+            border-width: 1px;
+            width: 100%;
+            outline-color: $blue;
+            box-shadow: none;
+        }
+
+        &-button {
+            width: 100%;
+            padding: 7px;
+            border-color: $blue;
+            border-radius: 5px;
+            border-width: 1px;
+            border-style: solid;
+            color: white;
+            background-color: $blue;
+            cursor: pointer;
+            font-weight: bolder;
+        }
+
+        &-error{
+            color: $error;
+            font-size: 1.2rem;
+            margin: 0;
+            border-color: $error;
+        }
+
+        &-login-error{
+            color: $error;
+            font-size: 1.4rem;
+            margin: 0;
+            text-align: center;
+            margin-top: 1rem;
+            border-color: $error;
+            font-weight: bold;
+        }
+    }
+
+    .form__registro {
+        margin-top: 7px;
+        font-size: 1.4rem;
+        text-align: center;
+
+        &-link {
+            display: inline;
+            font-weight: bolder;
+            color: $blue;
+            cursor: pointer;
+        }
+    }
+}
+
+.card {
+    padding: 3rem;
+    @include tablet {
+        border-color: $gray;
+        border-width: 1px;
+        border-style: solid;
+        background-color: white;
+    }
+}

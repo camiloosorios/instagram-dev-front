@@ -1,0 +1,19 @@
+<div class="container post">
+    <div class="post__form-container">
+        <form class="post__form card" [formGroup]="formPost" (ngSubmit)="create()">
+            <h1 class="post__logo">Instagram Dev</h1>
+            <div class="form__field">
+                <label for="image" class="form__field-label">Imagen</label>
+                <input type="file" name="image" id="image" [class]="styleValidate('image')" formControlName="image" (change)="onFileChange($event)">
+                <p *ngIf="formValidate('image')" class="form__field-error">La imagen es requerida</p>
+            </div>
+            <div class="form__field">
+                <label for="description" class="form__field-label">Descripción</label>
+                <textarea name="description" id="description" placeholder="Descripción..." [class]="styleValidate('description')" formControlName="description"></textarea>
+                <p *ngIf="formValidate('description')" class="form__field-error">La descripción es requerida</p>
+            </div>        
+            <button class="form__field-button">Crear</button>
+            <p class="form__field-post-error">{{messageCreatePost}}</p>
+        </form>
+    </div>
+</div>

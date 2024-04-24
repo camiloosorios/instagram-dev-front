@@ -1,0 +1,11 @@
+$blue : #4CB5F9;
+.not-found {
+    text-align: center;
+    margin-bottom: 15rem;
+    &__link {
+        text-decoration: underline;
+        cursor: pointer;
+        color: $blue;
+        font-weight: bold;
+    }
+}

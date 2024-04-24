@@ -1,0 +1,25 @@
+<div class="container login">
+    <div class="login__image-container">
+        <img src="/assets/img/imagen-login.png" alt="imagen-login">
+    </div>
+    <div class="login__form-container">
+        <form class="login__form card" [formGroup]="formLogin" (ngSubmit)="login()">
+            <h1 class="login__logo">Instagram Dev</h1>
+            <div class="form__field">
+                <label for="email" class="form__field-label">Correo electrónico</label>
+                <input type="email" name="email" id="email" placeholder="Correo electrónico" [class]="styleValidate('email')" formControlName="email">
+                <p *ngIf="formValidate('email')" class="form__field-error">Correo electrónico requerido</p>
+            </div>
+            <div class="form__field">
+                <label for="password" class="form__field-label">Contraseña</label>
+                <input type="password" name="password" id="password" placeholder="Contraseña" [class]="styleValidate('password')" formControlName="password">
+                <p *ngIf="formValidate('password')" class="form__field-error">Contraseña requerida</p>
+            </div>
+            <button class="form__field-button">Entrar</button>
+            <p class="form__field-login-error">{{messageLogin}}</p>
+        </form>
+        <div class="form__registro card">
+            <span class="form__registro-text">¿No tienes una cuenta? <p class="form__registro-link" routerLink="/auth/register">Regístrate</p> </span>
+        </div>
+    </div>
+</div>

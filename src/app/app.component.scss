@@ -1,0 +1,10 @@
+$lightGray : rgb(245, 244, 244);
+
+.footer {
+    text-align: center;
+
+    &__text {
+        color: lightGray;
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,58 @@
+<div class="container profile">
+    <div class="profile__info">
+        <div class="profile__info-photo">
+            <img class="photo-img" src="../../../assets/img/foto-perfil-defecto.webp" alt="foto de perfil">
+        </div>
+        <div class="profile__info-sumary">
+            <p class="profile__info-name-text-desktop">{{currentUser.name + ' ' + currentUser.lastname}}</p>
+            <div class="profile__info-sumary-container">
+
+                <div class="profile__info-sumary-content">
+                    <p class="profile__info-sumary-quantity">{{posts.length}}</p>
+                    <p class="profile__info-sumary-text">posts</p>
+                </div>
+                <div class="profile__info-sumary-content">            
+                    <p class="profile__info-sumary-quantity">{{followers}}</p>
+                    <p class="profile__info-sumary-text">followers</p>
+                </div>
+                <div class="profile__info-sumary-content">
+                    <p class="profile__info-sumary-quantity">{{following}}</p>
+                    <p class="profile__info-sumary-text">following</p>
+                </div>
+            </div>
+            <div class="profile__info-name-desktop">
+                <p class="profile__info-name-text">{{currentUser.username}}</p>
+                <button *ngIf="canFollow" class="profile__info-action-follow" (click)="follow()">Follow</button>
+                <button *ngIf="canUnFollow" class="profile__info-action-unfollow" (click)="unFollow()">Following</button>
+                <button *ngIf="authUserId != currentUser.id" class="profile__info-action-unfollow">Message</button>
+                <button *ngIf="authUserId == currentUser.id" class="profile__info-action-unfollow" [routerLink]="'/home/user/' + currentUser.username + '/edit'">Edit profile</button>
+                <button *ngIf="authUserId == currentUser.id" class="profile__info-action-unfollow">Share profile</button>
+            </div>
+        </div>
+    </div>
+    <div class="profile__info-name">
+        <p class="profile__info-username-text">{{currentUser.username}}</p>
+        <p class="profile__info-name-text">{{currentUser.name + ' ' + currentUser.lastname}}</p>
+    </div>
+    <div class="profile__info-action-buttons">
+        <button *ngIf="canFollow" class="profile__info-action-follow" (click)="follow()">Follow</button>
+        <button *ngIf="canUnFollow" class="profile__info-action-unfollow" (click)="unFollow()">Following</button>
+        <button *ngIf="authUserId != currentUser.id" class="profile__info-action-unfollow">Message</button>
+        <button *ngIf="authUserId == currentUser.id" class="profile__info-action-unfollow" [routerLink]="'/home/user/' + currentUser.username + '/edit'">Edit profile</button>
+        <button *ngIf="authUserId == currentUser.id" class="profile__info-action-unfollow">Share profile</button>
+    </div>
+    <div *ngIf="posts.length > 0" class="profile__icons">
+        <img src="../../../assets/img/grid.svg" alt="" style="width: 2rem;">
+        <img src="../../../assets/img/user-tag.svg" alt="" style="width: 2rem;">
+        <hr style="width: 100%;">
+    </div>
+    <div class="profile__posts">
+        <div *ngFor="let post of posts;" class="profile__posts-post">
+            <img class="post-img" [src]="'data:image/jpeg;base64,' + base64Image.get(post.id!)" alt="{{post.description}}" 
+            [routerLink]="'/home/user/' + currentUserUsername + '/post/' + post.id">
+        </div>
+    </div>
+    <div class="profile__non-posts-message">
+        <p *ngIf="posts.length == 0">Aún no hay publicaciones</p>
+    </div>
+</div>

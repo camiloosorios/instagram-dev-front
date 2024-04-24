@@ -1,0 +1,27 @@
+<div class="news container">
+    <div class="news__post card" *ngFor="let post of followingPosts">
+        <div [routerLink]="'/home/user/'+ post.user + '/post/' + post.id">
+            <div class="news__post__user-info">
+                <div class="profile">
+                    <img class="profile-image" src="../../../assets/img/foto-perfil-defecto.webp" alt="foto de perfil">
+                    <p class="profile-username" [routerLink]="'/home/user/' + post.user">{{post.user}}</p>
+                </div>
+            </div>
+            <div class="news__post__image">
+                <img [src]="'data:image/jpeg;base64,' + post.image" alt="imagen post">
+                <div class="news__post__info-interactions-desktop">
+                    <img class="news__post__info-interactions-likes" src="../../../assets/img/like.svg" alt="likes">
+                    <p class="news__post__info-date">{{post.createdAt | date}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="news__post__info">
+            <div class="news__post__info-interactions">
+                <img class="news__post__info-interactions-likes" src="../../../assets/img/like.svg" alt="likes">
+                <img class="news__post__info-interactions-comments" src="../../../assets/img/comment.svg" alt="likes" for="comentar">
+            </div>
+            <p class="news__post__info-date">{{post.createdAt | date}}</p>
+        </div>
+    </div>
+    
+</div>

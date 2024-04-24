@@ -1,0 +1,39 @@
+<div class="post container">
+    <div>
+        <div class="post__user-info">
+            <div class="profile">
+                <img class="profile-image" src="../../../assets/img/foto-perfil-defecto.webp" alt="foto de perfil">
+                <p class="profile-username" [routerLink]="'/home/user/' + username">{{username}}</p>
+            </div>
+        </div>
+        <div class="post__image">
+            <img [src]="'data:image/jpeg;base64,' + base64Image" alt="imagen post">
+            <div class="post__info-interactions-desktop">
+                <img class="post__info-interactions-likes" src="../../../assets/img/like.svg" alt="likes">
+                <p class="post__info-date">{{post.createdAt | date}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="post__info">
+        <div class="post__info-interactions">
+            <img class="post__info-interactions-likes" src="../../../assets/img/like.svg" alt="likes">
+            <img class="post__info-interactions-comments" src="../../../assets/img/comment.svg" alt="likes" for="comentar">
+        </div>
+        <p class="post__info-date">{{post.createdAt | date}}</p>
+        <div class="post__info-coments">
+            <form class="form" [formGroup]="formComment" (ngSubmit)="comment()">
+                <div class="form__field">
+                    <textarea class="form__field-textarea" placeholder="Escribir comentario..." id="comentar" formControlName="comment" cols="40"></textarea>                    
+                </div>
+                <button class="form__button">Enviar</button>            
+            </form>
+            <div class="comments" *ngFor="let comment of comments">
+                <div class="comments__info">
+                    <p class="comments__info-username">{{comment.user}}:</p>
+                    <p class="comments__info-comment">{{comment.content}}</p>
+                </div>
+                <p class="comments__date">{{comment.createdAt | date}}</p>
+            </div>
+        </div>
+    </div>
+</div>

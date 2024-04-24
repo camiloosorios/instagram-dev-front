@@ -1,0 +1,40 @@
+<div class="container edit">
+    <div class="edit__form-container">
+        <form class="edit__form card" [formGroup]="formEditUser" (ngSubmit)="edit()">
+            <h1 class="edit__logo">Editar Usuario</h1>
+            <div class="form__field">
+                <label for="name" class="form__field-label">Nombre</label>
+                <input type="text" name="name" id="name" placeholder="Nombre" [class]="styleValidate('name')" formControlName="name">
+                <p *ngIf="formValidate('name')" class="form__field-error">Nombre requerido</p>
+            </div>
+            <div class="form__field">
+                <label for="lastname" class="form__field-label">Apellido</label>
+                <input type="text" name="lastname" id="lastname" placeholder="Correo electrónico" [class]="styleValidate('lastname')" formControlName="lastname">
+                <p *ngIf="formValidate('lastname')" class="form__field-error">Apeliido requerido</p>
+            </div>
+            <div class="form__field">
+                <label for="username" class="form__field-label">Username</label>
+                <input type="text" name="username" id="username" placeholder="Username" [class]="styleValidate('username')" formControlName="username">
+                <p *ngIf="formValidate('username')" class="form__field-error">Username requerido</p>
+            </div>
+            <div class="form__field">
+                <label for="email" class="form__field-label">Correo electrónico</label>
+                <input type="email" name="email" id="email" placeholder="Correo electrónico" [class]="styleValidate('email')" formControlName="email">
+                <p *ngIf="formValidate('email')" class="form__field-error">Correo electrónico requerido</p>
+            </div>
+            <div class="form__field">
+                <label for="password" class="form__field-label">Contraseña</label>
+                <input type="password" name="password" id="password" placeholder="Contraseña" [class]="styleValidate('password')" formControlName="password">
+                <p *ngIf="formValidate('password')" class="form__field-error">Contraseña requerida</p>
+            </div>
+            <div class="form__field">
+                <label for="passwordConfirmation" class="form__field-label">Confirmar contraseña</label>
+                <input type="password" id="passwordConfirmation" placeholder="Confirmar contraseña" [class]="styleValidate('password')" #passwordConfirmation>
+                <p *ngIf="isDifferentPassword" class="form__field-error">Contraseñas deben coincidir</p>
+
+            </div>
+            <p class="form__field-edit-error">{{errorMessage}}</p>
+            <button class="form__field-button">Editar</button>
+        </form>
+    </div>
+</div>

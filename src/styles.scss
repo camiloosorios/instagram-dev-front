@@ -1,1 +1,62 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oleo+Script:wght@400;700&display=swap");
+
+// fonts
+$mainFont: 'Nunito', sans-serif;
+
+// Media queries sizes
+$phone: 480px;
+$tablet: 907px;
+$desktop: 1024px;
+$desktopxl: 1200px;
+
+//mixins
+@mixin phone {
+    @media (min-width: $phone) {
+        @content;
+    }
+}
+@mixin tablet {
+    @media (min-width: $tablet) {
+        @content;
+    }
+}
+@mixin desktop {
+    @media (min-width: $desktop) {
+        @content;
+    }
+}
+@mixin desktopXL {
+    @media (min-width: $desktopxl) {
+        @content;
+    }
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+    background-color: #F6F6F6;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+  
+body {
+    font-family: $mainFont;
+    font-size: 1.6rem;
+    margin: 0;
+}
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+img {
+    max-width: 100%;
+    display: block;
+}
+ul {
+    padding:0;
+    list-style: none;
+    margin: 0;
+}
